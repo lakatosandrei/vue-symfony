@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+
+{% block title %}AppBundle:SP:display{% endblock %}
+
+{% block body %}
+    {% stylesheets 'bundles/app/css/*' output="css/app.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <div id="app"></div>
+    {% javascripts
+    '@AppBundle/Resources/public/js/framework/*'
+    '@AppBundle/Resources/public/js/src/components/*'
+    '@AppBundle/Resources/public/js/src/main.js' output="js/app.js" %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
