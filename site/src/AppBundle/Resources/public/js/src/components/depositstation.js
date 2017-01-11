@@ -56,7 +56,7 @@ Vue.component('deposit-station', {
         '    </ul>',
         '    <ul class="dep-st-nav">',
         '        <ul class="dep-st-nav-list">',
-        '            <li class="dep-st-nav-item" v-for="action in dsData.navigation" v-bind:class="{ selected: action === navAction }">',
+        '            <li class="dep-st-nav-item" v-for="action in dsData.navigation" v-bind:class="{ selected: action.id === navAction.id }">',
         '                <i :class="action.icon" aria-hidden="true" @click="doAction(action)"></i>',
         '            </li>',
         '        </ul>',
