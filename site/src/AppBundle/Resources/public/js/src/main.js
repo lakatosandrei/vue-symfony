@@ -1,8 +1,25 @@
-const DPCluj = {template: '<div><deposit-station></deposit-station></div>'};
-const DPNewYork = {template: '<div><deposit-station></deposit-station></div>'};
+const DPCluj = {
+    template: [
+        '<div class="view">',
+        '    <a href="#/dp2">Deposit Station 2</a>',
+        '    <deposit-station>',
+        '    </deposit-station>',
+        '</div>'
+    ].join('')
+};
+const DPNewYork = {
+    template: [
+        '<div class="view">',
+        '    <a href="#/">Deposit Station 1</a>',
+        '    <deposit-station>',
+        '    </deposit-station>',
+        '</div>'
+    ].join('')
+};
+
 const routes = {
     '/': DPCluj,
-    '/about': DPNewYork
+    '/dp2': DPNewYork
 };
 
 const app = new Vue({
@@ -19,6 +36,11 @@ const app = new Vue({
         '    </component>',
         '</keep-alive>'
     ].join(''),
+    methods: {
+        changeRoute: function (route) {
+            this.goTo = route;
+        }
+    },
     computed: {
         goTo: {
             get: function () {

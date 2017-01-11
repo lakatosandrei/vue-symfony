@@ -122,7 +122,7 @@
         }
       },
       {
-        "id": 1,
+        "id": 9,
         "label": "Vier Testfall",
         "group": "Mende, Manuela",
         "status": 1,
@@ -132,7 +132,7 @@
         }
       },
       {
-        "id": 2,
+        "id": 10,
         "label": "Beata Brysz",
         "group": "Ittri, Mulham",
         "status": 1,
@@ -142,7 +142,7 @@
         }
       },
       {
-        "id": 3,
+        "id": 11,
         "label": "Claus Nolte",
         "group": "Ittri, Mulham",
         "status": 1,
@@ -152,7 +152,7 @@
         }
       },
       {
-        "id": 4,
+        "id": 12,
         "label": "Andrea Kuckuck",
         "group": "Mende, Manuela",
         "status": 1,
@@ -162,7 +162,7 @@
         }
       },
       {
-        "id": 5,
+        "id": 13,
         "label": "Frank Weigel",
         "group": "Mende, Manuela",
         "status": 1,
@@ -172,7 +172,7 @@
         }
       },
       {
-        "id": 6,
+        "id": 14,
         "label": "Marie Meier",
         "group": "Ittri, Mulham",
         "status": 1,
@@ -182,7 +182,7 @@
         }
       },
       {
-        "id": 7,
+        "id": 15,
         "label": "Heike Otto",
         "group": "Ittri, Mulham",
         "status": 0,
@@ -192,7 +192,7 @@
         }
       },
       {
-        "id": 8,
+        "id": 16,
         "label": "Ciongo Bongo",
         "group": "Ittri, Mulham",
         "status": 0,
@@ -202,7 +202,7 @@
         }
       },
       {
-        "id": 1,
+        "id": 17,
         "label": "Vier Testfall",
         "group": "Mende, Manuela",
         "status": 1,
@@ -212,7 +212,7 @@
         }
       },
       {
-        "id": 2,
+        "id": 18,
         "label": "Beata Brysz",
         "group": "Ittri, Mulham",
         "status": 1,
@@ -222,7 +222,7 @@
         }
       },
       {
-        "id": 3,
+        "id": 19,
         "label": "Claus Nolte",
         "group": "Ittri, Mulham",
         "status": 1,
@@ -232,7 +232,7 @@
         }
       },
       {
-        "id": 4,
+        "id": 20,
         "label": "Andrea Kuckuck",
         "group": "Mende, Manuela",
         "status": 1,
@@ -242,7 +242,7 @@
         }
       },
       {
-        "id": 5,
+        "id": 21,
         "label": "Frank Weigel",
         "group": "Mende, Manuela",
         "status": 1,
@@ -252,7 +252,7 @@
         }
       },
       {
-        "id": 6,
+        "id": 22,
         "label": "Marie Meier",
         "group": "Ittri, Mulham",
         "status": 1,
@@ -262,7 +262,7 @@
         }
       },
       {
-        "id": 7,
+        "id": 23,
         "label": "Heike Otto",
         "group": "Ittri, Mulham",
         "status": 0,
@@ -272,7 +272,247 @@
         }
       },
       {
-        "id": 8,
+        "id": 24,
+        "label": "Ciongo Bongo",
+        "group": "Ittri, Mulham",
+        "status": 0,
+        "details": {
+          "email": "test@test.de",
+          "tel": null
+        }
+      },
+      {
+        "id": 25,
+        "label": "Vier Testfall",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 26,
+        "label": "Beata Brysz",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 27,
+        "label": "Claus Nolte",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 28,
+        "label": "Andrea Kuckuck",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 29,
+        "label": "Frank Weigel",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 30,
+        "label": "Marie Meier",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 31,
+        "label": "Heike Otto",
+        "group": "Ittri, Mulham",
+        "status": 0,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 32,
+        "label": "Ciongo Bongo",
+        "group": "Ittri, Mulham",
+        "status": 0,
+        "details": {
+          "email": "test@test.de",
+          "tel": null
+        }
+      },
+      {
+        "id": 33,
+        "label": "Vier Testfall",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 34,
+        "label": "Beata Brysz",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 35,
+        "label": "Claus Nolte",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 36,
+        "label": "Andrea Kuckuck",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 37,
+        "label": "Frank Weigel",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 38,
+        "label": "Marie Meier",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 39,
+        "label": "Heike Otto",
+        "group": "Ittri, Mulham",
+        "status": 0,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 40,
+        "label": "Ciongo Bongo",
+        "group": "Ittri, Mulham",
+        "status": 0,
+        "details": {
+          "email": "test@test.de",
+          "tel": null
+        }
+      },
+      {
+        "id": 41,
+        "label": "Vier Testfall",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 42,
+        "label": "Beata Brysz",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 43,
+        "label": "Claus Nolte",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 44,
+        "label": "Andrea Kuckuck",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 45,
+        "label": "Frank Weigel",
+        "group": "Mende, Manuela",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 46,
+        "label": "Marie Meier",
+        "group": "Ittri, Mulham",
+        "status": 1,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 47,
+        "label": "Heike Otto",
+        "group": "Ittri, Mulham",
+        "status": 0,
+        "details": {
+          "email": "test@test.de",
+          "tel": "1234"
+        }
+      },
+      {
+        "id": 48,
         "label": "Ciongo Bongo",
         "group": "Ittri, Mulham",
         "status": 0,

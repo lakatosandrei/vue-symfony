@@ -5,7 +5,7 @@ Vue.component('deposit-station', {
     created: function () {
         let me = this;
 
-        ajax.get('/data', {}, function (response) {
+        ajax.get('/data/' + me.page + '/' + me.pageSize, {}, function (response) {
             let prevData,
                 dsData,
                 jsonBody;
@@ -57,17 +57,20 @@ Vue.component('deposit-station', {
         '            </li>',
         '        </ul>',
         '    </ul>',
-        '    <div class="more-btn">More</div>',
+        '    <div class="more-btn" v-if="!dataOver" @click="loadMore">More</div>',
         '</div>',
     ].join(''),
 
     data: function () {
         return {
             dsId: null,
+            dataOver: false,
             navAction: {},
             dsData: {},
             showGroup: null,
-            loaded: false
+            loaded: false,
+            page: 1,
+            pageSize: 10
         };
     },
 
@@ -109,12 +112,30 @@ Vue.component('deposit-station', {
             this.saveState();
         },
         displayGroup: function (group) {
-            this.showGroup = group.items;
+            this.showGroup = group.name;
             this.saveState();
         },
         goBack: function () {
             this.showGroup = null;
             this.saveState();
+        },
+        loadMore: function () {
+            let me = this;
+
+            ajax.get('/data/' + (++me.page) + '/' + me.pageSize, {}, function (response) {
+                let jsonBody;
+
+                try {
+                    jsonBody = JSON.parse(response);
+                } catch (e) {
+                    console.log(e);
+                }
+
+                if (jsonBody) {
+                    me.dsData.collections.patient = me.dsData.collections.patient.concat(jsonBody.collections.patient);
+                    me.dataOver = jsonBody['data_over'];
+                }
+            })
         }
     },
 
@@ -122,52 +143,66 @@ Vue.component('deposit-station', {
         sortOrFilteredList: function () {
             let filterType = this.navAction.filter,
                 grouped = this.navAction.group === true,
-                list;
+                list,
+                allGroups;
 
+            // If we don't have any data, we return an empty array
             if (!this['dsData']) {
                 return [];
             }
 
-            if (this.showGroup) {
-                return this.showGroup;
-            } else {
-                if (grouped) {
-                    list = this['dsData']['collections']['patient'].reduce(function (groups, item) {
-                        let groupObj = groups[item.group];
+            // If the user selected the "GROUP" button from the navigation bar
+            if (grouped) {
+                // We get all the groups from the data received
+                allGroups = this['dsData']['collections']['patient'].reduce(function (groups, item) {
+                    let groupObj = groups[item.group];
 
-                        if (!groupObj) {
-                            groups[item.group] = {
-                                name: item.group,
-                                active: item.status === 1,
-                                items: []
-                            };
-                        } else {
-                            if (groupObj.active) {
-                                groupObj.active = item.status === 1;
-                                groupObj.items.push(item);
-                            }
-                        }
-
-                        return groups;
-                    }, {});
-                } else {
-                    if (filterType) {
-                        list = this['dsData']['collections']['patient'].filter(function (patient) {
-                            let retValue = true;
-
-                            Object.keys(filterType).forEach(function (key) {
-                                if (patient[key] !== filterType[key]) {
-                                    retValue = false;
-                                }
-                            });
-
-                            return retValue;
-                        });
+                    if (!groupObj) {
+                        groups[item.group] = {
+                            name: item.group,
+                            active: item.status === 1,
+                            items: []
+                        };
                     } else {
-                        list = this['dsData']['collections']['patient'];
+                        if (groupObj.active) {
+                            groupObj.active = item.status === 1;
+                            groupObj.items.push(item);
+                        }
                     }
+
+                    return groups;
+                }, {});
+
+                // If the user already selected a specific group, we return the list of items from that group
+                if (this.showGroup) {
+                    list = allGroups[this.showGroup].items;
+                } else {
+                    // Otherwise we return the list of groups
+                    list = allGroups;
+                }
+            } else {
+                // If the user is not in the grouped navigation
+                if (filterType) {
+                    /*
+                    If we have a filterType in the navAction, we filter the items by the specific values
+                    */
+                    list = this['dsData']['collections']['patient'].filter(function (patient) {
+                        let retValue = true;
+
+                        Object.keys(filterType).forEach(function (key) {
+                            if (patient[key] !== filterType[key]) {
+                                retValue = false;
+                            }
+                        });
+
+                        return retValue;
+                    });
+                } else {
+                    // Otherwise, we just return the unfiltered list
+                    list = this['dsData']['collections']['patient'];
                 }
             }
+
 
             return list;
         }
