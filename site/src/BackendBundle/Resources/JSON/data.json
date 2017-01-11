@@ -17,7 +17,8 @@
             "label"
           ]
         }
-      ]
+      ],
+      "icon" : "fa fa-sort-alpha-asc"
     },
     {
       "id": "group",
@@ -25,7 +26,8 @@
       "url": "patient-list",
       "title": "Patienten-Liste",
       "collection": "patient",
-      "group": true
+      "group": true,
+      "icon" : "fa fa-object-group"
     },
     {
       "id": "archive",
@@ -36,7 +38,8 @@
       "group": false,
       "filter": {
         "status": 0
-      }
+      },
+      "icon" : "fa fa-archive"
     }
   ],
   "collections": {
