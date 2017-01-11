@@ -2,7 +2,7 @@ const DPCluj = {
     template: [
         '<div class="view">',
         '    <a href="#/dp2">Deposit Station 2</a>',
-        '    <deposit-station>',
+        '    <deposit-station custom-id="0">',
         '    </deposit-station>',
         '</div>'
     ].join('')
@@ -11,7 +11,7 @@ const DPNewYork = {
     template: [
         '<div class="view">',
         '    <a href="#/">Deposit Station 1</a>',
-        '    <deposit-station>',
+        '    <deposit-station custom-id="1">',
         '    </deposit-station>',
         '</div>'
     ].join('')
@@ -27,7 +27,6 @@ const app = new Vue({
     data: {
         currentView: routes[location.hash.replace('#', '')] || DPCluj,
         currentRoute: location.hash.replace('#', '') || '/',
-        dsCurrentId: 0,
         dsIds: {}
     },
     template: [
