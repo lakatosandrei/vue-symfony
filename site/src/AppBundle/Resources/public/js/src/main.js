@@ -32,15 +32,12 @@ const app = new Vue({
     },
     template: [
         '<keep-alive>',
+        '<transition name="component-fade" mode="out-in">',
         '    <component v-bind:is="currentView">',
         '    </component>',
+        '</transition>',
         '</keep-alive>'
     ].join(''),
-    methods: {
-        changeRoute: function (route) {
-            this.goTo = route;
-        }
-    },
     computed: {
         goTo: {
             get: function () {

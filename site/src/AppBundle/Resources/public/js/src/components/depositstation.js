@@ -36,7 +36,8 @@ Vue.component('deposit-station', {
         '<div v-if="loaded" class="deposit-station">',
         '    <ul class="dep-st-list">',
         '        <label v-if="showGroup" @click="goBack">Back</label>',
-        '        <li class="dep-st-item" v-for="patient in sortOrFilteredList">',
+        '<transition-group name="list" tag="p">',
+        '        <li class="dep-st-item" v-for="patient in sortOrFilteredList" v-bind:key="patient">',
         '            <div v-if="navAction.group && !showGroup">',
         '                <label @click="displayGroup(patient)">{{ patient.name }}</label>',
         '            </div>',
@@ -44,11 +45,14 @@ Vue.component('deposit-station', {
         '            <div class="v-mask" @click="showDetails(patient, $event)"></div>',
         '            <label>{{ patient.label }}</label>',
         '            <label>Tel: {{ patient.details.tel  }} <span v-if="!patient.details.tel">-</span></label>',
+        '            <transition name="fade">',
         '            <label v-for="(detail, key) in patient.details" v-if="key !== \'tel\'" class="hidden" v-bind:class="{ show: patient.visible }">',
         '                {{ key }} - {{ detail }}',
         '            </label>',
+        '            </transition>',
         '            </div>',
         '        </li>',
+        '</transition-group>',
         '    </ul>',
         '    <ul class="dep-st-nav">',
         '        <ul class="dep-st-nav-list">',
@@ -62,7 +66,7 @@ Vue.component('deposit-station', {
         '        <div class="v-mask" @click="displaySearchBar = false">x</div>',
         '        <input type="text" v-model="searchTerm">',
         '    </div>',
-        '</div>',
+        '</div>'
     ].join(''),
 
     data: function () {
