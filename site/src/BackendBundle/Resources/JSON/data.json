@@ -14,7 +14,7 @@
         {
           "type": "text",
           "value": [
-            "name"
+            "label"
           ]
         }
       ]

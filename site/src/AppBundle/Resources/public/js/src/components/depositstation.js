@@ -58,11 +58,16 @@ Vue.component('deposit-station', {
         '        </ul>',
         '    </ul>',
         '    <div class="more-btn" v-if="!dataOver" @click="loadMore">More</div>',
+        '    <div class="search-bar" v-if="displaySearchBar">',
+        '        <div class="v-mask" @click="displaySearchBar = false">x</div>',
+        '        <input type="text" v-model="searchTerm">',
+        '    </div>',
         '</div>',
     ].join(''),
 
     data: function () {
         return {
+            searchTerm: null,
             dsId: null,
             dataOver: false,
             navAction: {},
@@ -70,7 +75,8 @@ Vue.component('deposit-station', {
             showGroup: null,
             loaded: false,
             page: 1,
-            pageSize: 10
+            pageSize: 10,
+            displaySearchBar: false
         };
     },
 
@@ -107,8 +113,13 @@ Vue.component('deposit-station', {
             Vue.set(patient, 'visible', !patient.visible);
         },
         doAction: function (action) {
+            if (this.navAction === action) {
+                this.displaySearchBar = true;
+            }
+
             this.showGroup = null;
             this.navAction = action;
+
             this.saveState();
         },
         displayGroup: function (group) {
@@ -141,20 +152,21 @@ Vue.component('deposit-station', {
 
     computed: {
         sortOrFilteredList: function () {
-            let filterType = this.navAction.filter,
-                grouped = this.navAction.group === true,
+            let me = this,
+                filterType = me.navAction.filter,
+                grouped = me.navAction.group === true,
                 list,
                 allGroups;
 
             // If we don't have any data, we return an empty array
-            if (!this['dsData']) {
+            if (!me['dsData']) {
                 return [];
             }
 
             // If the user selected the "GROUP" button from the navigation bar
             if (grouped) {
                 // We get all the groups from the data received
-                allGroups = this['dsData']['collections']['patient'].reduce(function (groups, item) {
+                allGroups = me['dsData']['collections']['patient'].reduce(function (groups, item) {
                     let groupObj = groups[item.group];
 
                     if (!groupObj) {
@@ -174,8 +186,8 @@ Vue.component('deposit-station', {
                 }, {});
 
                 // If the user already selected a specific group, we return the list of items from that group
-                if (this.showGroup) {
-                    list = allGroups[this.showGroup].items;
+                if (me.showGroup) {
+                    list = allGroups[me.showGroup].items;
                 } else {
                     // Otherwise we return the list of groups
                     list = allGroups;
@@ -184,9 +196,9 @@ Vue.component('deposit-station', {
                 // If the user is not in the grouped navigation
                 if (filterType) {
                     /*
-                    If we have a filterType in the navAction, we filter the items by the specific values
-                    */
-                    list = this['dsData']['collections']['patient'].filter(function (patient) {
+                     If we have a filterType in the navAction, we filter the items by the specific values
+                     */
+                    list = me['dsData']['collections']['patient'].filter(function (patient) {
                         let retValue = true;
 
                         Object.keys(filterType).forEach(function (key) {
@@ -199,10 +211,29 @@ Vue.component('deposit-station', {
                     });
                 } else {
                     // Otherwise, we just return the unfiltered list
-                    list = this['dsData']['collections']['patient'];
+                    list = me['dsData']['collections']['patient'];
                 }
             }
 
+            if (me.searchTerm) {
+                if (me.navAction['filterBox']) {
+                    let filterBox = me.navAction['filterBox'];
+
+                    list = list.filter(function (item) {
+                        let ok = false;
+
+                        filterBox.forEach(function (filter) {
+                            filter['value'].forEach(function (byValue) {
+                                if (item[byValue].toLowerCase().startsWith(me.searchTerm.toLowerCase())) {
+                                    ok = true;
+                                }
+                            });
+                        });
+
+                        return ok;
+                    });
+                }
+            }
 
             return list;
         }
